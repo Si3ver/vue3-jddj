@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lesson 008(data、methods、computed、watch)</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    // vm.$data.xxx / vm.xxx 可以修改组件状态
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: 'hello world',
+          count: 2,
+          price: 5,
+          newTotal: 10,
+        }
+      },
+      watch: {
+        price(newVal, prevVal) {
+          this.newTotal = newVal * this.count
+        }
+      },
+      computed: {
+        total() {
+          // return Date.now() + this.count
+          return this.count * this.price
+        }
+      },
+      methods: {
+        formatString(string) {
+          return string.toUpperCase();
+        },
+        // 只要页面重新渲染，才会重新计算
+        getTotal() {
+          return Date.now();
+          // return this.count * this.price;
+        },
+      },
+      template: `
+        <div>
+          {{formatString(message)}}
+          {{total}}
+          {{newTotal}}
+          {{getTotal()}}
+        </div>
+      `
+    })
+    const vm = app.mount('#root')
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lesson 009(样式绑定语法)</title>
+  <style>
+    .red {
+      color: red;
+    }
+    .green {
+      color: green;
+    }
+  </style>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    // vm.$data.xxx / vm.xxx 可以修改组件状态
+    const app = Vue.createApp({
+      data() {
+        return {
+          classString: 'red',
+          classObject: { red: true, green: false },
+          classArray: ['red', 'green', {brown: true}],
+          styleString: 'color: yellow;background: orange',
+          styleObject: {
+            color: 'orange',
+            background: 'yellow'
+          }
+        }
+      },
+      template: `
+        <div :class="classString">
+          Hello World
+        </div>
+      `,
+      template: `
+        <div :class="classObject">
+          Hello World
+        </div>
+      `,
+      template: `
+        <div :class="classArray">
+          Hello World
+        </div>
+      `,
+      template: `
+        <div :style="styleString">
+          Hello World
+        </div>
+      `,
+      template: `
+        <div :style="styleObject">
+          Hello World
+          <demo classOne="green" classTwo="red" />
+        </div>
+      `,
+    })
+
+    // 非 prop 的 attribute: https://v3.cn.vuejs.org/guide/component-attrs.html
+    app.component('demo', {
+      template: `
+        <div :class="$attrs.classOne">one</div>
+        <div :class="$attrs.classTwo">two</div>
+      `
+    })
+
+    const vm = app.mount('#root')
+  </script>
+</body>
+</html>

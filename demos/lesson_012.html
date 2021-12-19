@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lesson 012(事件绑定)</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    // https://v3.cn.vuejs.org/guide/events.html#%E6%8C%89%E9%94%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6
+    // 事件修饰符： stop, prevent, capture, self, once, passive
+    // 按键修饰符： enter, tab, delete, esc, up, down, left, right
+    // 鼠标修饰符： left, right, middle
+    // 精确修饰符： exact
+    const app = Vue.createApp({
+      methods: {
+        handleClick() {
+          console.log('click')
+        },
+      },
+      // 按键修饰符
+      template: `
+        <div>
+          <div @click.ctrl.exact="handleClick">123</div>
+        </div>
+      `
+    })
+
+
+    const vm = app.mount('#root')
+  </script>
+</body>
+</html>

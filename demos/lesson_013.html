@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lesson 013(表单中双向绑定指令的使用)</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    // input, textarea, checkbox, radio, select
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: 'hello',
+          list: [],
+          list2: 'a',
+          selectedVal: '',
+        }
+      },
+      template: `
+        <div>
+          <h2>input & textarea</h2>
+
+          {{message}}<br/>
+          <input v-model.trim="message" /><br/>
+          <textarea v-model.trim="message" /><br/>
+
+          <h2>checkbox</h2>
+
+          {{list}}<br/>
+          <label>a
+            <input type="checkbox" v-model="list" value="a" />
+          </label><br/>
+          <label>b
+            <input type="checkbox" v-model="list" value="b" />
+          </label><br/>
+          <label>c
+            <input type="checkbox" v-model="list" value="c" />
+          </label><br/>
+
+          <h2>radio</h2>
+
+          {{list2}}<br/>
+          <label>a
+            <input type="radio" v-model="list2" value="a" />
+          </label><br/>
+          <label>b
+            <input type="radio" v-model="list2" value="b" />
+          </label><br/>
+          <label>c
+            <input type="radio" v-model="list2" value="c" />
+          </label><br/>
+          </div>
+
+          <h2>select</h2>
+          {{selectedVal}}<br/>
+          <select v-model="selectedVal">
+            <option disabled>please select...</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+      `
+    })
+
+
+    const vm = app.mount('#root')
+  </script>
+</body>
+
+</html>
