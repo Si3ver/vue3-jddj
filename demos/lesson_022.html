@@ -21,12 +21,12 @@
     },
     provide() {
       return {
-        count: this.count,
+        count: Vue.computed(() => this.count),
       }
     },
     template: `
       <div>
-        <child :count="count" />
+        <child />
         <button @click="count += 1">Add</button>
       </div>
     `
@@ -40,6 +40,9 @@
     inject: ['count'],
     template: `<div>{{count}}</div>`
   })
+
+  app.config.devtools = true
+  console.log(app.config)
 
   const vm = app.mount('#root');
   </script>
