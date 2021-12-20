@@ -6,15 +6,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>lesson 028(mixin基础用法)</title>
   <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    .desc {
+      background: lightCyan;
+    }
+  </style>
 </head>
 <body>
   <div id="root"></div>
   <script>
+
+    const myMixin = {
+      number: 1,
+      data() {
+        return {
+          msg: 'hello',
+        }
+      },
+      methods: {
+        sayHello() {
+          console.log('hello')
+        },
+      },
+      created() {
+        console.log('myMixin created')
+      },
+      mounted() {
+        console.log('myMixin mounted')
+      },
+    }
+
     const app = Vue.createApp({
+      mixins: [myMixin],
       number: 2,
+      data() {
+        return {
+          msg: 'world',
+        }
+      },
+      methods: {
+        sayHello() {
+          console.log('world!')
+        },
+      },
+      created() {
+        console.log('app created')
+      },
+      mounted() {
+        console.log('app mounted')
+      },
       template: `
         <div>
-          <div>{{this.$options.number}}</div>
+          <div>
+            <span class="desc">$options: </span>
+            {{this.$options.number}}
+          </div>
+          <div>
+            <span class="desc">$data: </span>
+            {{this.$data.msg}} - {{this.msg}}
+          </div>
+          <button @click="sayHello">say</button>
         </div>
       `
     })
