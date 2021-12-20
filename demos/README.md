@@ -16,11 +16,11 @@
 
 ## 高级语法
 
-+ lesson 028: mixin
-+ lesson 029: 自定义指令
-+ lesson 030: teleport
-+ lesson 031: render函数
-+ lesson 032: 插件的定义和适用
++ lesson 028: mixin https://v3.cn.vuejs.org/guide/mixins.html
++ lesson 029: 自定义指令 https://v3.cn.vuejs.org/guide/custom-directive.html
++ lesson 030: teleport https://v3.cn.vuejs.org/guide/teleport.html
++ lesson 031: render函数 https://v3.cn.vuejs.org/guide/render-function.html
++ lesson 032: 插件的定义和适用 https://v3.cn.vuejs.org/guide/plugins.html
 + lesson 033: 数据校验插件
 
 ## Composition Api
