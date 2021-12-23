@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>lesson 001(计数器)</title>
-  <script src="https://unpkg.com/vue@next"></script>
+  <title>lesson 000(vue2)</title>
+  <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
   <div id="root"></div>
   <script>
-    const app = Vue.createApp({
+    const app = new Vue({
       data() {
         return {
           content: 1
@@ -21,10 +21,21 @@
           this.$data.content += 1
         }, 1000)
       },
-      template: `<div>{{content}}</div>`
+      methods: {
+        log() {
+          console.trace(this.$data.content)
+        }
+      },
+      template: `
+        <div>
+          {{content}}
+          <button @click="log">log</button>
+        </div>
+      `
     })
-    const vm = app.mount('#root')
-    console.log(app, vm, app===vm)
+    const vm = app.$mount('#root')
+
+    console.log(app, vm, app === vm)
   </script>
 </body>
 </html>
